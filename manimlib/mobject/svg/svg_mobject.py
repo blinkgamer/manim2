@@ -31,10 +31,10 @@ class SVGMobject(VMobject):
         "should_center": True,
         "height": 2,
         "width": None,
-        # Must be filled in in a subclass, or when called
+        # Must be filled in a subclass, or when called
         "file_name": None,
         "unpack_groups": True,  # if False, creates a hierarchy of VGroups
-        "stroke_width": DEFAULT_STROKE_WIDTH,
+        "stroke_width": 0,  # DEFAULT_STROKE_WIDTH,
         "fill_opacity": 1.0,
         # "fill_color" : LIGHT_GREY,
     }
@@ -416,7 +416,7 @@ class VMobjectFromSVGPathstring(VMobject):
                 if isLower:
                     new_points[i:i + 3] -= points[-1]
                     new_points[i:i + 3] += new_points[i - 1]
-                self.add_cubic_bezier_curve_to(*new_points[i:i+3])
+                self.add_cubic_bezier_curve_to(*new_points[i:i + 3])
 
     def string_to_points(self, coord_string):
         numbers = string_to_numbers(coord_string)
