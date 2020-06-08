@@ -1,18 +1,19 @@
 #!/usr/bin/env python
-
 from manimlib.imports import *
+
 
 # To watch one of these scenes, run the following:
 # python3 -m manim example_scenes.py SquareToCircle -pl
-#
-# Use the flat -l for a faster rendering at a lower
-# quality.
+
+# Use -p preview in default quality.
+# Use -l for a faster rendering at a lower quality.
+# Use -hd, -fhd, -qhd, -uhd to get HD, Full HD, Quad HD(default), Ultra HD(4K)
+# Use -r <number> to specify a resolution
+# (-r 1080 for a 1920x1080 video, -r 1080,560 for a 560x1080 video)
+
 # Use -s to skip to the end and just save the final frame
-# Use the -p to have the animation (or image, if -s was
-# used) pop up once done.
+# Use the -p to have the animation (or image, if -s was used) pop up once done.
 # Use -n <number> to skip ahead to the n'th animation of a scene.
-# Use -r <number> to specify a resolution (for example, -r 1080
-# for a 1920x1080 video)
 
 
 class OpeningManimExample(Scene):

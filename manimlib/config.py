@@ -41,14 +41,24 @@ def parse_cli():
             help="Render at a low quality (for faster rendering)",
         ),
         parser.add_argument(
-            "-m", "--medium_quality",
+            "-hd", "--hd_quality",
             action="store_true",
-            help="Render at a medium quality",
+            help="Render at a HD quality",
         ),
         parser.add_argument(
-            "--high_quality",
+            "-fhd", "--full_hd_quality",
             action="store_true",
-            help="Render at a high quality",
+            help="Render at a full HD quality",
+        ),
+        parser.add_argument(
+            "-qhd", "--quad_hd_quality",
+            action="store_true",
+            help="Render at a Quad HD quality",
+        ),
+        parser.add_argument(
+            "-uhd", "--ultra_hd_quality",
+            action="store_true",
+            help="Render at a Ultra HD quality",
         ),
         parser.add_argument(
             "-g", "--save_pngs",
@@ -210,12 +220,14 @@ def get_camera_configuration(args):
     camera_config = {}
     if args.low_quality:
         camera_config.update(manimlib.constants.LOW_QUALITY_CAMERA_CONFIG)
-    elif args.medium_quality:
-        camera_config.update(manimlib.constants.MEDIUM_QUALITY_CAMERA_CONFIG)
-    elif args.high_quality:
-        camera_config.update(manimlib.constants.HIGH_QUALITY_CAMERA_CONFIG)
+    elif args.hd_quality:
+        camera_config.update(manimlib.constants.HD_QUALITY_CAMERA_CONFIG)
+    elif args.full_hd_quality:
+        camera_config.update(manimlib.constants.FULL_HD_QUALITY_CAMERA_CONFIG)
+    elif args.ultra_hd_quality:
+        camera_config.update(manimlib.constants.ULTRA_HD_QUALITY_CAMERA_CONFIG)
     else:
-        camera_config.update(manimlib.constants.PRODUCTION_QUALITY_CAMERA_CONFIG)
+        camera_config.update(manimlib.constants.QUAD_HD_QUALITY_CAMERA_CONFIG)
 
     # If the resolution was passed in via -r
     if args.resolution:

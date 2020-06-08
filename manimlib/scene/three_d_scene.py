@@ -1,7 +1,8 @@
 from manimlib.animation.transform import ApplyMethod
 from manimlib.camera.three_d_camera import ThreeDCamera
 from manimlib.constants import DEGREES
-from manimlib.constants import PRODUCTION_QUALITY_CAMERA_CONFIG
+from manimlib.constants import QUAD_HD_QUALITY_CAMERA_CONFIG
+from manimlib.constants import ULTRA_HD_QUALITY_CAMERA_CONFIG
 from manimlib.mobject.coordinate_systems import ThreeDAxes
 from manimlib.mobject.geometry import Line
 from manimlib.mobject.three_dimensions import Sphere
@@ -278,7 +279,9 @@ class SpecialThreeDScene(ThreeDScene):
 
     def __init__(self, **kwargs):
         digest_config(self, kwargs)
-        if self.camera_config["pixel_width"] == PRODUCTION_QUALITY_CAMERA_CONFIG["pixel_width"]:
+        if self.camera_config["pixel_width"] == QUAD_HD_QUALITY_CAMERA_CONFIG["pixel_width"]:
+            config = {}
+        elif self.camera_config["pixel_width"] == ULTRA_HD_QUALITY_CAMERA_CONFIG["pixel_width"]:
             config = {}
         else:
             config = self.low_quality_config

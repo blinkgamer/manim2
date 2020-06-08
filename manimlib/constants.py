@@ -87,12 +87,15 @@ with open(TEMPLATE_TEX_FILE, "r") as infile:
 HELP_MESSAGE = """
    Usage:
    python extract_scene.py <module> [<scene name>]
-   -p preview in low quality
+   -p preview in default quality
    -s show and save picture of last frame
    -w write result to file [this is default if nothing else is stated]
    -o <file_name> write to a different file_name
    -l use low quality
-   -m use medium quality
+   -hd use HD quality
+   -fhd use Full HD quality
+   -qhd use Quad HD quality (default)
+   -uhd use Ultra HD quality
    -a run and save every scene in the script, or all args for the given scene
    -q don't print progress
    -f when writing to a movie file, export the frames in png sequence
@@ -114,33 +117,42 @@ NO_SCENE_MESSAGE = """
    There are no scenes inside that module
 """
 
-# There might be other configuration than pixel shape later...
-PRODUCTION_QUALITY_CAMERA_CONFIG = {
+# The screen is 16:9
+# 超清4K，2160P，分辨率是9倍的HD
+ULTRA_HD_QUALITY_CAMERA_CONFIG = {
+    "pixel_height": 2160,
+    "pixel_width": 3840,
+    "frame_rate": 120,
+}
+
+# 高清1440P，分辨率是4倍的HD
+QUAD_HD_QUALITY_CAMERA_CONFIG = {
     "pixel_height": 1440,
     "pixel_width": 2560,
     "frame_rate": 60,
 }
 
-HIGH_QUALITY_CAMERA_CONFIG = {
+# 高清1080
+FULL_HD_QUALITY_CAMERA_CONFIG = {
     "pixel_height": 1080,
     "pixel_width": 1920,
     "frame_rate": 60,
 }
-
-MEDIUM_QUALITY_CAMERA_CONFIG = {
+# 高清720P
+HD_QUALITY_CAMERA_CONFIG = {
     "pixel_height": 720,
     "pixel_width": 1280,
     "frame_rate": 30,
 }
-
+# 清晰480P
 LOW_QUALITY_CAMERA_CONFIG = {
     "pixel_height": 480,
     "pixel_width": 854,
     "frame_rate": 15,
 }
 
-DEFAULT_PIXEL_HEIGHT = PRODUCTION_QUALITY_CAMERA_CONFIG["pixel_height"]
-DEFAULT_PIXEL_WIDTH = PRODUCTION_QUALITY_CAMERA_CONFIG["pixel_width"]
+DEFAULT_PIXEL_HEIGHT = QUAD_HD_QUALITY_CAMERA_CONFIG["pixel_height"]
+DEFAULT_PIXEL_WIDTH = QUAD_HD_QUALITY_CAMERA_CONFIG["pixel_width"]
 DEFAULT_FRAME_RATE = 60
 
 DEFAULT_POINT_DENSITY_2D = 25
